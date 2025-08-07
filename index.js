@@ -4,6 +4,7 @@ import express from 'express'
 const app = express()
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import { apiLimiter, authLimiter } from './middlewares/rateLimiter.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -57,8 +58,8 @@ connectDb()
   })
 
 // Mount routers
-app.use('/api/users', userRouter)
-app.use('/api/products', productRouter)
+app.use('/api/users', authLimiter, userRouter)
+app.use('/api/products', apiLimiter, productRouter)
 app.use('/api/reviews', reviewRouter)
 app.use('/api/payments', paymentRouter)
 app.use('/api/orders', orderRouter)
