@@ -1,0 +1,154 @@
+<!-- views/profile.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="icon" href="/acadsy-pic.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f5f7fa;
+        padding: 40px;
+        text-align: center;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      header {
+        background: #2d3748;
+        color: white;
+        padding: 30px;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 28px;
+      }
+      main {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+      }
+      .social-list {
+        list-style: none;
+        padding: 0;
+      }
+      .social-item {
+        margin: 18px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+      .social-link {
+        font-size: 18px;
+        text-decoration: none;
+        color: #4a5568;
+        font-weight: 600;
+      }
+      .twitter:hover {
+        color: #1da1f2;
+      }
+      .linkedin:hover {
+        color: #1da1f2;
+      }
+      .github:hover {
+        color: #1da1f2;
+      }
+
+      footer {
+        margin-top: 40px;
+        padding: 20px;
+        font-size: 14px;
+        color: #718096;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      .read-link {
+        margin-top: 1.4rem;
+        font-size: 1.2rem;
+      }
+      .read-link > a {
+        text-decoration: none;
+      }
+      .read-link > a:hover {
+        color: #1da1f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><%= title %></h1>
+      </header>
+
+      <main>
+        <h2>Connect With Me</h2>
+
+        <ul class="social-list">
+          <!-- Twitter -->
+          <li class="social-item">
+            <span class="status warning"></span>
+            <a
+              href="<%= socials.twitter %>"
+              target="_blank"
+              class="social-link twitter"
+            >
+              Twitter(X)
+            </a>
+          </li>
+
+          <!-- LinkedIn -->
+          <li class="social-item">
+            <span class="status online"></span>
+            <a
+              href="<%= socials.linkedin %>"
+              target="_blank"
+              class="social-link linkedin"
+            >
+              LinkedIn
+            </a>
+          </li>
+
+          <!-- GitHub -->
+          <li class="social-item">
+            <span class="status online"></span>
+            <a
+              href="<%= socials.github %>"
+              target="_blank"
+              class="social-link github"
+            >
+              GitHub
+            </a>
+          </li>
+        </ul>
+        <div class="read-link">
+          <a href="/api-docs">Read the docs</a>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          &copy; <%= new Date().getFullYear() %> Developed with ❤️ by
+          <strong>Dharmendra Pandit</strong>
+        </p>
+        <p>
+          This profile page uses dynamic EJS templating for social integration.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
