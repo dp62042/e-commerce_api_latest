@@ -1,91 +1,173 @@
-<!-- views/profile.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <!-- Favicon -->
     <link rel="icon" href="/acadsy-pic.png" type="image/png" />
+    <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* Reset & Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
         background: #f5f7fa;
-        padding: 40px;
-        text-align: center;
+        color: #2d3748;
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
       }
+
+      /* Responsive Container */
       .container {
         max-width: 800px;
+        width: 100%;
         margin: 0 auto;
         background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         overflow: hidden;
       }
+
+      /* Header */
       header {
         background: #2d3748;
         color: white;
-        padding: 30px;
+        padding: 40px 20px;
+        text-align: center;
       }
+
       header h1 {
+        font-size: clamp(24px, 5vw, 28px);
         margin: 0;
-        font-size: 28px;
+        font-weight: 600;
       }
+
+      /* Main Content */
       main {
-        padding: 30px;
+        padding: 30px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-items: center;
+        gap: 20px;
       }
+
+      main h2 {
+        font-size: clamp(20px, 5vw, 24px);
+        color: #1a202c;
+      }
+
+      /* Social List */
       .social-list {
         list-style: none;
+        width: 100%;
+        max-width: 400px;
         padding: 0;
       }
+
       .social-item {
-        margin: 18px 0;
+        margin: 16px 0;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 12px;
+        font-size: clamp(16px, 4.5vw, 18px);
       }
+
       .social-link {
-        font-size: 18px;
         text-decoration: none;
         color: #4a5568;
         font-weight: 600;
+        transition: color 0.2s ease;
       }
+
+      .social-link:hover {
+        color: #1da1f2;
+      }
+
       .twitter:hover {
         color: #1da1f2;
       }
       .linkedin:hover {
-        color: #1da1f2;
+        color: #0077b5;
       }
       .github:hover {
-        color: #1da1f2;
+        color: #181616;
       }
 
+      /* Status Indicator */
+      .status {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .online {
+        background: #38a169;
+      }
+      .warning {
+        background: #dd6b20;
+      }
+
+      /* Read Docs Link */
+      .read-link {
+        margin-top: 24px;
+      }
+
+      .read-link a {
+        font-size: clamp(14px, 4vw, 16px);
+        color: #1da1f2;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .read-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer */
       footer {
-        margin-top: 40px;
-        padding: 20px;
-        font-size: 14px;
+        width: 100%;
+        margin-top: 32px;
+        padding: 24px 20px;
+        font-size: clamp(12px, 4vw, 14px);
         color: #718096;
+        text-align: center;
         border-top: 1px solid #e2e8f0;
       }
 
-      .read-link {
-        margin-top: 1.4rem;
-        font-size: 1.2rem;
+      footer p {
+        margin: 8px 0;
       }
-      .read-link > a {
-        text-decoration: none;
-      }
-      .read-link > a:hover {
-        color: #1da1f2;
+
+      /* Mobile Optimization */
+      @media (max-width: 480px) {
+        .social-item {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .social-link {
+          font-size: 16px !important;
+        }
+
+        main {
+          padding: 20px 16px;
+        }
+
+        .container {
+          border-radius: 12px;
+        }
       }
     </style>
   </head>
@@ -135,8 +217,9 @@
             </a>
           </li>
         </ul>
+
         <div class="read-link">
-          <a href="/api-docs">Read the docs</a>
+          <a href="/api-docs">📘 Read the docs</a>
         </div>
       </main>
 

@@ -3,74 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API Routes - Documentation</title>
+    <title>📘 API Route Documentation</title>
     <link rel="icon" href="/acadsy-pic.png" type="image/png" />
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <style>
+      /* Reset & Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
         background: #f8fafc;
         color: #1e293b;
-        padding: 40px 20px;
         line-height: 1.7;
+        padding: 20px;
+        min-height: 100vh;
       }
+
       .container {
         max-width: 1200px;
         margin: 0 auto;
+        padding: 0 16px;
       }
+
+      /* Header */
       header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 32px;
       }
+
       header h1 {
-        margin: 0;
-        font-size: 32px;
+        font-size: clamp(24px, 5vw, 32px);
         color: #0f172a;
+        margin: 0;
       }
+
       header p {
         color: #64748b;
-        font-size: 18px;
+        font-size: clamp(14px, 4vw, 18px);
+        margin-top: 8px;
       }
+
+      /* Back Button */
+      .back-home {
+        margin-bottom: 24px;
+        text-align: left;
+      }
+
+      .back-home a {
+        font-size: clamp(14px, 4vw, 16px);
+        color: #0a66c2;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-home a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive Table Wrapper */
+      .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 32px;
+      }
+
       table {
         width: 100%;
         border-collapse: collapse;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         background: white;
-        border-radius: 12px;
-        overflow: hidden;
       }
+
       th {
         background: #0a66c2;
         color: white;
-        padding: 16px;
+        padding: 14px 12px;
         text-align: left;
         font-weight: 700;
+        font-size: 14px;
       }
+
       td {
-        padding: 14px 16px;
+        padding: 12px;
         border-bottom: 1px solid #e2e8f0;
+        font-size: 14px;
       }
+
       tr:nth-child(even) {
         background: #f1f5f9;
       }
+
       tr:hover {
         background: #e6f1ff;
-        transition: 0.2s ease;
       }
+
+      /* Method Badges */
       .method {
         display: inline-block;
-        padding: 4px 10px;
+        padding: 4px 8px;
         border-radius: 6px;
+        font-size: 12px;
         font-weight: 600;
-        font-size: 14px;
         color: white;
+        text-align: center;
+        min-width: 40px;
       }
+
       .get {
         background: #10b981;
       }
@@ -83,318 +130,354 @@
       .delete {
         background: #ef4444;
       }
+
+      /* Section Headers */
       .section {
         background: #0a66c2;
         color: white;
         font-weight: 700;
         text-align: center;
-        padding: 12px 0 !important;
-        font-size: 16px;
-      }
-      footer {
-        margin-top: 60px;
-        text-align: center;
+        padding: 10px 0 !important;
         font-size: 14px;
-        color: #64748b;
       }
+
+      /* Badges */
       .badge {
-        font-size: 12px;
-        padding: 4px 8px;
+        font-size: 11px;
+        padding: 2px 6px;
         background: #cbd5e1;
         color: #1e293b;
         border-radius: 4px;
       }
+
       .protected {
         background: #aa88fa;
       }
-      .back-home > a {
-        text-decoration: none;
-        font-size: large;
+
+      /* Footer */
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 13px;
+        color: #64748b;
+        padding: 20px 0;
+        border-top: 1px solid #e2e8f0;
       }
-      .back-home > a:hover {
-        color: #10b981;
+
+      footer p {
+        margin: 6px 0;
+      }
+
+      /* Mobile Optimization */
+      @media (max-width: 640px) {
+        .method {
+          font-size: 11px;
+          padding: 3px 6px;
+        }
+
+        th,
+        td {
+          padding: 10px 8px;
+          font-size: 13px;
+        }
+
+        .section {
+          font-size: 13px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
+      <!-- Back to Home -->
       <div class="back-home">
-        <a href="/">Back</a>
+        <a href="/">← Back to Profile</a>
       </div>
+
+      <!-- Header -->
       <header>
         <h1>📘 API Route Documentation</h1>
         <p>Complete list of backend endpoints for E-Commerce App</p>
       </header>
 
-      <table>
-        <thead>
-          <tr>
-            <th width="20%">Module</th>
-            <th width="15%">Method</th>
-            <th width="40%">Endpoint</th>
-            <th width="25%">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Authentication & User Management -->
-          <tr>
-            <td class="section" colspan="4">
-              🔐 Authentication & User Management
-            </td>
-          </tr>
-          <tr>
-            <td>Auth</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/users/profile</td>
-            <td>Get logged-in user profile (protected)</td>
-          </tr>
-          <tr>
-            <td>Auth</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/users/register</td>
-            <td>Register a new user</td>
-          </tr>
-          <tr>
-            <td>Auth</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/users/login</td>
-            <td>Login user and return JWT token</td>
-          </tr>
-          <tr>
-            <td>Auth</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/users/logout</td>
-            <td>Logout user (clear session if applicable)</td>
-          </tr>
-          <tr>
-            <td>Auth</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/users/admin/all</td>
-            <td>
-              [Admin] Get all users <span class="badge protected">Auth</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Auth</td>
-            <td><span class="method delete">DELETE</span></td>
-            <td>/api/users/:id</td>
-            <td>
-              [Admin] Delete user by ID
-              <span class="badge protected">Admin</span>
-            </td>
-          </tr>
+      <!-- Responsive Table -->
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th width="25%">Module</th>
+              <th width="15%">Method</th>
+              <th width="40%">Endpoint</th>
+              <th width="20%">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Authentication & User Management -->
+            <tr>
+              <td class="section" colspan="4">
+                🔐 Authentication & User Management
+              </td>
+            </tr>
+            <tr>
+              <td>Auth</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/users/profile</td>
+              <td>Get logged-in user profile (protected)</td>
+            </tr>
+            <tr>
+              <td>Auth</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/users/register</td>
+              <td>Register a new user</td>
+            </tr>
+            <tr>
+              <td>Auth</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/users/login</td>
+              <td>Login user and return JWT token</td>
+            </tr>
+            <tr>
+              <td>Auth</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/users/logout</td>
+              <td>Logout user (clear session if applicable)</td>
+            </tr>
+            <tr>
+              <td>Auth</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/users/admin/all</td>
+              <td>
+                [Admin] Get all users <span class="badge protected">Auth</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Auth</td>
+              <td><span class="method delete">DELETE</span></td>
+              <td>/api/users/:id</td>
+              <td>
+                [Admin] Delete user by ID
+                <span class="badge protected">Admin</span>
+              </td>
+            </tr>
 
-          <!-- Product Management -->
-          <tr>
-            <td class="section" colspan="4">🛍️ Product Management</td>
-          </tr>
-          <tr>
-            <td>Product</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/products</td>
-            <td>Get all products (with pagination/filter)</td>
-          </tr>
-          <tr>
-            <td>Product</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/products/:id</td>
-            <td>Get product by ID</td>
-          </tr>
-          <tr>
-            <td>Product</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/products</td>
-            <td>
-              [Admin] Create new product
-              <span class="badge protected">Admin</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Product</td>
-            <td><span class="method put">PUT</span></td>
-            <td>/api/products/:id</td>
-            <td>
-              [Admin] Update product <span class="badge protected">Admin</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Product</td>
-            <td><span class="method delete">DELETE</span></td>
-            <td>/api/products/:id</td>
-            <td>
-              [Admin] Delete product <span class="badge protected">Admin</span>
-            </td>
-          </tr>
+            <!-- Product Management -->
+            <tr>
+              <td class="section" colspan="4">🛍️ Product Management</td>
+            </tr>
+            <tr>
+              <td>Product</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/products</td>
+              <td>Get all products (with pagination/filter)</td>
+            </tr>
+            <tr>
+              <td>Product</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/products/:id</td>
+              <td>Get product by ID</td>
+            </tr>
+            <tr>
+              <td>Product</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/products</td>
+              <td>
+                [Admin] Create new product
+                <span class="badge protected">Admin</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Product</td>
+              <td><span class="method put">PUT</span></td>
+              <td>/api/products/:id</td>
+              <td>
+                [Admin] Update product
+                <span class="badge protected">Admin</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Product</td>
+              <td><span class="method delete">DELETE</span></td>
+              <td>/api/products/:id</td>
+              <td>
+                [Admin] Delete product
+                <span class="badge protected">Admin</span>
+              </td>
+            </tr>
 
-          <!-- Reviews & Ratings -->
-          <tr>
-            <td class="section" colspan="4">⭐ Reviews & Ratings</td>
-          </tr>
-          <tr>
-            <td>Review</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/reviews/product/:productId</td>
-            <td>Get all reviews for a product</td>
-          </tr>
-          <tr>
-            <td>Review</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/reviews/product/:productId</td>
-            <td>Add a review (user must be logged in)</td>
-          </tr>
-          <tr>
-            <td>Review</td>
-            <td><span class="method put">PUT</span></td>
-            <td>/api/reviews/:reviewId</td>
-            <td>
-              Update own review <span class="badge protected">Owner</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Review</td>
-            <td><span class="method delete">DELETE</span></td>
-            <td>/api/reviews/:reviewId</td>
-            <td>
-              Delete review <span class="badge protected">Owner/Admin</span>
-            </td>
-          </tr>
+            <!-- Reviews & Ratings -->
+            <tr>
+              <td class="section" colspan="4">⭐ Reviews & Ratings</td>
+            </tr>
+            <tr>
+              <td>Review</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/reviews/product/:productId</td>
+              <td>Get all reviews for a product</td>
+            </tr>
+            <tr>
+              <td>Review</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/reviews/product/:productId</td>
+              <td>Add a review (user must be logged in)</td>
+            </tr>
+            <tr>
+              <td>Review</td>
+              <td><span class="method put">PUT</span></td>
+              <td>/api/reviews/:reviewId</td>
+              <td>
+                Update own review <span class="badge protected">Owner</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Review</td>
+              <td><span class="method delete">DELETE</span></td>
+              <td>/api/reviews/:reviewId</td>
+              <td>
+                Delete review <span class="badge protected">Owner/Admin</span>
+              </td>
+            </tr>
 
-          <!-- Payment Processing -->
-          <tr>
-            <td class="section" colspan="4">💳 Payment Processing</td>
-          </tr>
-          <tr>
-            <td>Payment</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/payments/create-intent</td>
-            <td>Create Stripe payment intent</td>
-          </tr>
-          <tr>
-            <td>Payment</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/payments/confirm/:paymentId</td>
-            <td>Confirm payment status</td>
-          </tr>
+            <!-- Payment Processing -->
+            <tr>
+              <td class="section" colspan="4">💳 Payment Processing</td>
+            </tr>
+            <tr>
+              <td>Payment</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/payments/create-intent</td>
+              <td>Create Stripe payment intent</td>
+            </tr>
+            <tr>
+              <td>Payment</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/payments/confirm/:paymentId</td>
+              <td>Confirm payment status</td>
+            </tr>
 
-          <!-- Order Management -->
-          <tr>
-            <td class="section" colspan="4">📦 Order Management</td>
-          </tr>
-          <tr>
-            <td>Order</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/orders</td>
-            <td>Get user's orders <span class="badge protected">Auth</span></td>
-          </tr>
-          <tr>
-            <td>Order</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/orders/:id</td>
-            <td>Get order by ID</td>
-          </tr>
-          <tr>
-            <td>Order</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/orders</td>
-            <td>Create new order from cart</td>
-          </tr>
-          <tr>
-            <td>Order</td>
-            <td><span class="method put">PUT</span></td>
-            <td>/api/orders/:id/status</td>
-            <td>
-              [Admin] Update order status
-              <span class="badge protected">Admin</span>
-            </td>
-          </tr>
+            <!-- Order Management -->
+            <tr>
+              <td class="section" colspan="4">📦 Order Management</td>
+            </tr>
+            <tr>
+              <td>Order</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/orders</td>
+              <td>
+                Get user's orders <span class="badge protected">Auth</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Order</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/orders/:id</td>
+              <td>Get order by ID</td>
+            </tr>
+            <tr>
+              <td>Order</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/orders</td>
+              <td>Create new order from cart</td>
+            </tr>
+            <tr>
+              <td>Order</td>
+              <td><span class="method put">PUT</span></td>
+              <td>/api/orders/:id/status</td>
+              <td>
+                [Admin] Update order status
+                <span class="badge protected">Admin</span>
+              </td>
+            </tr>
 
-          <!-- Cart Management -->
-          <tr>
-            <td class="section" colspan="4">🛒 Cart Management</td>
-          </tr>
-          <tr>
-            <td>Cart</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/cart</td>
-            <td>
-              Get user's cart items <span class="badge protected">Auth</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Cart</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/cart/add</td>
-            <td>Add item to cart</td>
-          </tr>
-          <tr>
-            <td>Cart</td>
-            <td><span class="method put">PUT</span></td>
-            <td>/api/cart/update/:itemId</td>
-            <td>Update item quantity</td>
-          </tr>
-          <tr>
-            <td>Cart</td>
-            <td><span class="method delete">DELETE</span></td>
-            <td>/api/cart/remove/:itemId</td>
-            <td>Remove item from cart</td>
-          </tr>
+            <!-- Cart Management -->
+            <tr>
+              <td class="section" colspan="4">🛒 Cart Management</td>
+            </tr>
+            <tr>
+              <td>Cart</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/cart</td>
+              <td>
+                Get user's cart items <span class="badge protected">Auth</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Cart</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/cart/add</td>
+              <td>Add item to cart</td>
+            </tr>
+            <tr>
+              <td>Cart</td>
+              <td><span class="method put">PUT</span></td>
+              <td>/api/cart/update/:itemId</td>
+              <td>Update item quantity</td>
+            </tr>
+            <tr>
+              <td>Cart</td>
+              <td><span class="method delete">DELETE</span></td>
+              <td>/api/cart/remove/:itemId</td>
+              <td>Remove item from cart</td>
+            </tr>
 
-          <!-- Address Management -->
-          <tr>
-            <td class="section" colspan="4">📍 Address Management</td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td><span class="method get">GET</span></td>
-            <td>/api/addresses</td>
-            <td>
-              Get all saved addresses <span class="badge protected">Auth</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/addresses</td>
-            <td>Add new shipping address</td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td><span class="method put">PUT</span></td>
-            <td>/api/addresses/:id</td>
-            <td>Update existing address</td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td><span class="method delete">DELETE</span></td>
-            <td>/api/addresses/:id</td>
-            <td>Delete an address</td>
-          </tr>
+            <!-- Address Management -->
+            <tr>
+              <td class="section" colspan="4">📍 Address Management</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><span class="method get">GET</span></td>
+              <td>/api/addresses</td>
+              <td>
+                Get all saved addresses
+                <span class="badge protected">Auth</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/addresses</td>
+              <td>Add new shipping address</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><span class="method put">PUT</span></td>
+              <td>/api/addresses/:id</td>
+              <td>Update existing address</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><span class="method delete">DELETE</span></td>
+              <td>/api/addresses/:id</td>
+              <td>Delete an address</td>
+            </tr>
 
-          <!-- Imagekit Image Upload -->
-          <tr>
-            <td class="section" colspan="4">☁️ ImageKit Image Upload</td>
-          </tr>
-          <tr>
-            <td>Cloud</td>
-            <td><span class="method post">POST</span></td>
-            <td>/api/cloud/upload</td>
-            <td>
-              Upload image to Imagekit
-              <span class="badge protected">Auth</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Cloud</td>
-            <td><span class="method delete">DELETE</span></td>
-            <td>/api/cloud/delete/:publicId</td>
-            <td>
-              Delete image by public ID
-              <span class="badge protected">Admin</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            <!-- ImageKit Image Upload -->
+            <tr>
+              <td class="section" colspan="4">☁️ ImageKit Image Upload</td>
+            </tr>
+            <tr>
+              <td>Cloud</td>
+              <td><span class="method post">POST</span></td>
+              <td>/api/cloud/upload</td>
+              <td>
+                Upload image to ImageKit
+                <span class="badge protected">Auth</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Cloud</td>
+              <td><span class="method delete">DELETE</span></td>
+              <td>/api/cloud/delete/:publicId</td>
+              <td>
+                Delete image by public ID
+                <span class="badge protected">Admin</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <!-- Footer -->
       <footer>
         <p>
           &copy; <%= new Date().getFullYear() %> — API Documentation by
