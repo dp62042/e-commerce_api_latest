@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: e-commerce-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: my-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
